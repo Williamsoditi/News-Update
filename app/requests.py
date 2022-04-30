@@ -50,10 +50,51 @@ def process_articles(articles_list):
         author = articles_item.get('author')
         publishedAt = articles_item.get('publishedAt')
         url = articles_item.get('url')
-        # import pdb
-        # pdb.set_trace()
+        
         if title:
             articles_object = Articles(title,content,urlToImage,author,publishedAt,url)
             articles_results.append(articles_object)
 
     return articles_results
+
+def get_sources():
+    '''
+    Function that gets the json response to the url request
+    '''
+    get_sources_url = 'https://newsapi.org/v2/sources?apiKey=bb900c6b52db42d0a4cd6a8b422b91a9'
+
+    with urllib.request.urlopen(get_sources_url) as url:
+        get_sources_data = url.read()
+        get_sources_response = json.loads(get_sources_data)
+
+        sources_results = None
+
+        if get_sources_response['sources']:
+            sources_results_list = get_sources_response['sources']
+            sources_results = process_sources(sources_results_list)
+
+    return sources_results
+
+def process_sources(sources_list):
+    '''
+    Function  that processes the source result and transform them to a list of Objects
+
+    Args:
+        source_list: A list of dictionaries that contain source details
+
+    Returns :
+        sources_results: A list of source objects
+    '''
+    sources_results = []
+    for sources_item in sources_list:
+        id = sources_item.get('id')
+        name = sources_item.get('name')
+        category = sources_item.get('category')
+        description = sources_item.get('description')
+        language = sources_item.get('language')
+       
+        if id:
+            sources_object = Sources(id,name,category,description,language)
+            sources_results.append(sources_object)
+
+    return sources_results
