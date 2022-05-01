@@ -1,0 +1,38 @@
+<!-- DISPLAY SOURCES -->
+{% macro displaySourcesList(sources_list)%}
+
+    {% for sources in sources_list %}
+    <div class="col-md-6">
+        <h3 class="text-center">{{sources.name}}</h3>
+        <p>{{sources.description}}</p>
+        <p><strong>Category: </strong>{{sources.category}}</p>
+        <p><strong>News Language: </strong>{{sources.language}}</p>
+        <a href="/articles/{{sources.id}}"><button class ="btn btn-primary">{{ sources.id}}</button></a>
+    </div>
+    {% endfor %}
+
+{% endmacro %}
+
+<!-- DISPLAY ARTICLES -->
+{% macro displayArticlesList(articles_list) %}  
+
+    {% for articles in articles_list %}
+
+    <div class="col-md-6">
+        <div class="card">
+            {% if articles.urlToImage %}
+            <img src="{{ articles.content }}" height="400" width="500" alt="{{ articles.title | truncate(10) }}">
+            {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ articles.title }}</h5>
+            <p class="card-text"><strong>Uploaded on: </strong>Uploaded on:{{ articles.publishedAt}} </p>
+            <p class="card-text"><strong>Compiled by :</strong>{{ articles.author}}</p>
+            <a href="{{ articles.url }}"><button class="btn btn-primary">More Details</button></a> 
+          </div>
+        </div>
+    </div>                
+    {% endfor %}
+
+{% endmacro %}
+
+
