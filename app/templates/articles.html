@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro% }
+
+<!-- Fetching articles from the API -->
+{% block content %}
+<div class="container-fluid">
+    <h2 class="text-center">Latest Articles</h2>
+    <div>
+        {{macro.displayArticlesList(articles)}}
+    </div>
+</div>
+{% endblock %}
