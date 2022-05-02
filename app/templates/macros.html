@@ -2,13 +2,11 @@
 {% macro displaySourcesList(sources_list) %}
 
     {% for sources in sources_list %}
-    <div class="col-md-6">
         <h3 class="text-center"><u>{{sources.name}}</u></h3>
         <p>{{sources.description}}</p>
         <p><strong>Category: </strong>{{sources.category}}</p>
         <p><strong>News Language: </strong>{{sources.language}}</p>
         <a href="/articles/{{sources.id}}"><button class ="btn btn-success">{{ sources.id}}</button></a>
-    </div>
     {% endfor %}
 
 {% endmacro %}
@@ -25,7 +23,7 @@
             {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ articles.title }}</h5>
-            <p class="card-text"><strong>Uploaded on: </strong>Uploaded on:{{ articles.publishedAt}} </p>
+            <p class="card-text"><strong>Uploaded on: </strong>Uploaded on:{{ articles.publishedAt}}</p>
             <p class="card-text"><strong>Compiled by :</strong>{{ articles.author}}</p>
             <div class="mt-4 mb-4">
                 <a href="{{ articles.url }}" class="mt-3"><button class="btn btn-success">More Details</button></a> 
