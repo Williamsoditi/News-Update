@@ -15,7 +15,7 @@ This is a news application incorporated by `NewsApi` where a user can view news 
 The user can also view images, descriptions of a news article and also click on an article and read the full aticle
 
 The following is a live link to the application
-``
+`https://news-ipdate.herokuapp.com/`
 ## Installation Process
 *To clone this repository locally, type the following command on your terminal.*
 
